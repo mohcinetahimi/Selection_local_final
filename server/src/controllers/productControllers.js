@@ -32,7 +32,6 @@ exports.addProduct = (req, res) => {
     try {
         const products = readData();
         const newProduct = req.body;
-        console.log(req.body)
         const imageBase64 = newProduct.image; 
         const imageHoverBase64 = newProduct.imageHover; 
     
@@ -56,6 +55,14 @@ exports.addProduct = (req, res) => {
 
         const saveBase64Image = (base64, filePath) => {
             const base64Data = base64.replace(/^data:image\/\w+;base64,/, "");
+            
+            // Ensure the directory exists
+            const dir = path.dirname(filePath);
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir, { recursive: true }); // Create directories recursively
+            }
+            
+            // Write the file
             fs.writeFileSync(filePath, base64Data, "base64");
         };
 
@@ -70,6 +77,9 @@ exports.addProduct = (req, res) => {
 
 
         newProduct.id = products.nextId;
+        delete newProduct.image ; 
+        delete newProduct.imageHover ;
+        
         products.products.push(newProduct);
 
         products.nextId++;
@@ -81,6 +91,7 @@ exports.addProduct = (req, res) => {
         res.status(201).json(newProduct);
         
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: "Failed to add product", error });
     }
 };

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
@@ -17,9 +16,16 @@ function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+
+
+
+
+
 
   useEffect(() => {
     const checkAuthentication = async () => {
