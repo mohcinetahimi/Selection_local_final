@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode ,useEffect} from 'react';
 import axios from 'axios';
 // Define the types for Product, Client, and related structures
 interface Product {
@@ -114,7 +114,9 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     
       }
     }
-    fetchProducts() ; 
+    useEffect(()=>{
+      fetchProducts();
+    },[])
 
 
   const updateProduct = (id: number, updates: Partial<Product>) => {
