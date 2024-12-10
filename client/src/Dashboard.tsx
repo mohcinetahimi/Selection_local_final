@@ -19,7 +19,7 @@ import AddClient from './components/addClient';
 import ClientProfile from './components/ClientProfile';
 import Commands from './components/Commands';
 import ConsultCommand from './pages/ConsultCommad';
-
+import Products from './pages/Products';
 
 //import CommandInfo from './pages/CommandInfo';
 
@@ -104,6 +104,15 @@ function Dashboard() {
             <>
               <PageTitle title="All Commands" />
               <Commands />
+            </>
+          }
+        />
+        <Route
+          path="/Products"
+          element={
+            <>
+              <PageTitle title="Products" />
+              <Products />
             </>
           }
         />

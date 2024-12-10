@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import SignatureCanvas from 'react-signature-canvas';
 import { useProductContext } from '../../contexts/ProductContext';
@@ -31,28 +31,35 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
   initialEmail,
 }) => {
   const [email, setEmail] = useState(initialEmail);
+  const [nameConsultant, setnameConsultant] = useState("");
   const signatureRef1 = useRef<SignatureCanvas>(null);
   const signatureRef2 = useRef<SignatureCanvas>(null);
+  const signatureConsRef = useRef<SignatureCanvas>(null);
   const { clientId } = useParams<{ clientId: string }>();
-  const { updateClient, products, nombreOfLivraison } = useProductContext();
+  const { updateClient, products, nombreOfLivraison, client } = useProductContext();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handleSaveSignature = (): { dataUrl1: string, dataUrl2: string } => {
+  const handleSaveSignature = (): { dataUrl1: string, dataUrl2: string, dataUrl3: string } => {
     let dataUrl1;
     let dataUrl2;
+    let dataUrl3;
     if (signatureRef1.current) {
       dataUrl1 = signatureRef1.current.toDataURL();
     }
     if (signatureRef2.current) {
       dataUrl2 = signatureRef2.current.toDataURL();
     }
-    return { dataUrl1, dataUrl2 };
+    if (signatureConsRef.current) {
+      dataUrl3 = signatureConsRef.current.toDataURL();
+    }
+    return { dataUrl1, dataUrl2, dataUrl3 };
   };
 
   const productsByCategory = (): ProductsByCategory => {
+
     const newproducts: ProductsByCategory = {};
     try {
       products.forEach((product) => {
@@ -85,10 +92,29 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
     return newproducts;
   };
 
+
+
+  useEffect(()=>{
+      const nameOfConsultant = localStorage.getItem("nameConsultant") ; 
+      if(!nameOfConsultant){
+        localStorage.setItem("nameConsultant", "");
+      }else{
+        setnameConsultant(nameOfConsultant) ; 
+      }
+  },[])
+
+  const handleNameConsultant = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setnameConsultant(event.target.value);
+    localStorage.setItem("nameConsultant", event.target.value);
+  };
+
+
+
+
   const handleConfirm = async () => {
     const savedSignatures = handleSaveSignature();
     if (savedSignatures) {
-      updateClient({ signature1: savedSignatures.dataUrl1, signature2: savedSignatures.dataUrl2 });
+      updateClient({ signature1: savedSignatures.dataUrl1, signature2: savedSignatures.dataUrl2, signatureConsultant: savedSignatures.dataUrl3 });
       updateClient({ email: email ? email : null });
 
       try {
@@ -97,6 +123,7 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
         const dataToSend = {
           clientId: clientId,
           object: { NL: nombreOfLivraison, products: productsByCategoris },
+
         };
 
         const response = await axios.post("http://localhost:7070/api/consultant/createCommand", dataToSend, {
@@ -104,7 +131,7 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
             Authorization: `Bearer ${token}`,
           },
         });
-        updateClient({CommandNumber : response.data.savedCommand.orderNumber})
+        updateClient({ CommandNumber: response.data.savedCommand.orderNumber })
 
         toast.success("Command created successfully!", {
           position: toast.POSITION.TOP_RIGHT,
@@ -121,6 +148,7 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
       }
     }
   };
+
 
   return (
     <Modal
@@ -144,9 +172,20 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
+        <div className="mb-4">
+          <label htmlFor="nameConsultant" className="block text-sm font-medium text-gray-700">name Consultant</label>
+          <input
+            type="text"
+            id="nameConsultant"
+            value={nameConsultant}
+            onChange={handleNameConsultant}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          />
+        </div>
 
-        <div className="flex justify-between">
-          <div className="w-1/2 p-4">
+        <div className="grid grid-cols-2 gap-4">
+
+          <div className="col-span-1 p-4">
             <h2 className="text-lg font-semibold mb-2">Signature Client 1</h2>
             <SignatureCanvas
               ref={signatureRef1}
@@ -159,10 +198,12 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
               backgroundColor="white"
             />
           </div>
-          <div className="w-1/2 p-4">
-            <h2 className="text-lg font-semibold mb-2">Signature Client 2</h2>
+          
+          {/* First row */}
+          <div className="col-span-1 p-4">
+            <h2 className="text-lg font-semibold mb-2">Signature Consultant</h2>
             <SignatureCanvas
-              ref={signatureRef2}
+              ref={signatureConsRef}
               penColor="black"
               canvasProps={{
                 className: 'border border-gray-300',
@@ -172,7 +213,29 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
               backgroundColor="white"
             />
           </div>
+          {/* Second row */}
+          <div className="col-span-1 p-4">
+            {client.clients[0].fullName !== "*" ? (
+              <>
+                <h2 className="text-lg font-semibold mb-2">Signature Client 2</h2>
+                <SignatureCanvas
+                  ref={signatureRef2}
+                  penColor="black"
+                  canvasProps={{
+                    className: 'border border-gray-300',
+                    width: 600,
+                    height: 300,
+                  }}
+                  backgroundColor="white"
+                />
+              </>
+            ) : (<></>)}
+          </div>
+
+
         </div>
+
+
 
         <div className="mt-4 flex justify-end space-x-2">
           <button

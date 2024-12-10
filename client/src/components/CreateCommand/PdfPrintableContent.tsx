@@ -74,25 +74,25 @@ const PdfPrintableContent: React.FC = () => {
       </ul>
       <br /><br /><br />
       <FoodServiceSummary></FoodServiceSummary>
-      
+
       <br /><br />
       <PaymentComponentpdf />
 
 
       <FormResilation />
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
 
-      { (
+      {(
         <div className="flex flex-col items-center mt-10">
           <h3 className="text-lg font-semibold mb-4">Signature Client 1 </h3>
           <div className="border border-gray-300 p-4">
@@ -104,7 +104,7 @@ const PdfPrintableContent: React.FC = () => {
           </div>
         </div>
       )}
-      { (
+      {client.clients[0].fullName != "*" ? (
         <div className="flex flex-col items-center mt-10">
           <h3 className="text-lg font-semibold mb-4"> Conseiller </h3>
           <div className="border border-gray-300 p-4">
@@ -115,9 +115,21 @@ const PdfPrintableContent: React.FC = () => {
             />
           </div>
         </div>
+      ) : (<></>)}
+      {(
+        <div className="flex flex-col items-center mt-10">
+          <h3 className="text-lg font-semibold mb-4"> Consultant </h3>
+          <div className="border border-gray-300 p-4">
+            <img
+              src={client.signatureConsultant}
+              alt="Client Signature"
+              className="border border-gray-300"
+            />
+          </div>
+        </div>
       )}
 
-      
+
     </div>
 
   );

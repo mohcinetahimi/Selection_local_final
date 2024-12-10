@@ -63,6 +63,7 @@ interface Client {
   consultantId?: string | null;
   signature1?: string | null;
   signature2?: string | null;
+  signatureConsultant?: string | null;
   createdAt?: string;
   updatedAt?: string;
   __v?: number;

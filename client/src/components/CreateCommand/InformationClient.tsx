@@ -4,6 +4,7 @@ import '../CreateCommand/tailwind.output.css';
 
 const InformationClient: React.FC = () => {
   const { client } = useProductContext();
+  console.log(client);
   const { appointment, address, phoneNumbers, freezer, weeklyBudget, fullName, note, language, clients } = client;
 
   return (
@@ -24,12 +25,15 @@ const InformationClient: React.FC = () => {
             </dt>
             <dd className="mt-1 text-sm text-gray-700">{fullName}</dd>
           </div>
-          <div className="border-t border-gray-100 pt-6">
-            <dt className="text-sm font-medium text-gray-800">
-              {language === 'Francais' ? 'Langue' : 'Language'}
-            </dt>
-            <dd className="mt-1 text-sm text-gray-700">{language}</dd>
-          </div>
+          {clients[0].fullName != "*" ? (
+            <div className="border-t border-gray-100 pt-6">
+              <dt className="text-sm font-medium text-gray-800">
+                {language === 'Francais' ? 'Nom complet 2' : 'Full Name 2'}
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">{clients[0].fullName}</dd>
+            </div>) :
+            (<></>)}
+
           <div className="border-t border-gray-100 pt-6">
             <dt className="text-sm font-medium text-gray-800">
               {language === 'Francais' ? 'Note' : 'Note'}
@@ -86,16 +90,12 @@ const InformationClient: React.FC = () => {
           </div>
           <div className="border-t border-gray-100 pt-6">
             <dt className="text-sm font-medium text-gray-800">
-              {language === 'Francais' ? 'Clients associés' : 'Associated Clients'}
+              {language === 'Francais' ? 'nom du consultant' : 'consultant name'}
             </dt>
-            <dd className="mt-1 text-sm text-gray-700">
-              {clients.map((client: any, index: number) => (
-                <div key={index}>
-                  {client.fullName}
-                </div>
-              ))}
-            </dd>
+            <dd className="mt-1 text-sm text-gray-700">{localStorage.getItem("nameConsultant") ? localStorage.getItem("nameConsultant") : ""}</dd>
           </div>
+          
+          
         </dl>
       </div>
     </div>

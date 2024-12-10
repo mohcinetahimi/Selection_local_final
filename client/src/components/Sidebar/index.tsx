@@ -217,7 +217,37 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
               {/* <!-- Menu Item Commands --> */}
 
-            
+
+
+              {/* <!-- Menu Item Commands --> */}
+              <li>
+                <NavLink
+                  to="/Products"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('calendar') &&
+                    'bg-graydark dark:bg-meta-4'
+                    }`}
+                >
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="19"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2C4.89543 2 4 2.89543 4 4V6H3C2.44772 6 2 6.44772 2 7V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V7C22 6.44772 21.5523 6 21 6H20V4C20 2.89543 19.1046 2 18 2H6ZM6 4H18V6H6V4ZM6 10H10V14H6V10ZM14 10H18V14H14V10Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+
+
+                  Products
+                </NavLink>
+              </li>
+              {/* <!-- Menu Item Commands --> */}
+
+
               {/* <!-- Menu Item Settings --> */}
             </ul>
           </div>
