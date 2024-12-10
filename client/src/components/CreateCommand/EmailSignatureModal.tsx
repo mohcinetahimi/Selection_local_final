@@ -125,7 +125,7 @@ const EmailSignatureModal: React.FC<EmailSignatureModalProps> = ({
           object: { NL: nombreOfLivraison, products: productsByCategoris },
 
         };
-
+        console.log("button clicked")
         const response = await axios.post("http://localhost:7070/api/consultant/createCommand", dataToSend, {
           headers: {
             Authorization: `Bearer ${token}`,

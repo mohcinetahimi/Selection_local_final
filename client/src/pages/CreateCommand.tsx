@@ -8,6 +8,7 @@ import InformationClient from '../components/CreateCommand/InformationClient';
 import ButtonDivider from '../components/CreateCommand/ButtonDivider';
 import FraisMention from '../components/CreateCommand/FraisMention';
 import PaymentComponent from '../components/CreateCommand/PaymentComponent';
+import Livraison from '../components/CreateCommand/Livraison';
 import MenuBase from '../components/CreateCommand/MenuBase';
 import ModalResume from '../components/CreateCommand/ModalResume';
 import FoodCategory from '../components/CreateCommand/FoodCategory';
@@ -24,6 +25,7 @@ import ContractResolutionNotice from '../components/CreateCommand/ContractResolu
 
 import '../components/CreateCommand/tailwind.output.css';
 import GlobalLoader from '../common/Loader/GlobalLoader';
+import ConditionsAndModalities from '../components/CreateCommand/ConditionsAndModalities';
 
 
 interface Title {
@@ -44,6 +46,8 @@ const CreateCommande: React.FC = () => {
   const [isInfoVisible, setIsInfoVisible] = useState<boolean>(true);
   const [isFraisMentionVisible, setIsFraisMentionVisible] = useState<boolean>(true);
   const [isPaymentVisible, setIsPaymentVisible] = useState<boolean>(true);
+  const [isLivraison,setIsLivraisonVisible]=useState<boolean>(true);
+  const [isConditions,setIsConditionsVisible]=useState<boolean>(true);
   const [isMenuBase, setIsMenuBase] = useState<boolean>(true);
   const [isFormulaire, setIsFormulaire] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -168,6 +172,13 @@ const CreateCommande: React.FC = () => {
   const togglePayment = () => {
     setIsPaymentVisible(prev => !prev);
   };
+  const toggleLivraison = () => {
+    setIsLivraisonVisible(prev =>!prev);
+  }
+
+  const toggleConditions = () => {
+    setIsConditionsVisible(prev=>!prev);
+  }
 
   const toggleFraisMention = () => {
     setIsFraisMentionVisible(prev => !prev);
@@ -243,6 +254,15 @@ const CreateCommande: React.FC = () => {
               />
               {isPaymentVisible && <PaymentComponent />}
               {isPaymentVisible && <FoodServiceSummary />}
+              <ButtonDivider onClick={toggleLivraison}
+                              title='Livraison'
+                              className={`my-3 hover:bg-gray-200 transition duration-300 ${isLivraison ? 'bg-blue-100' : ''}`}/>
+              {isLivraison && <Livraison/>}
+
+              <ButtonDivider onClick={toggleConditions}
+                              title='ConditionsAndModalities'
+                              className={`my-3 hover:bg-gray-200 transition duration-300 ${isConditions ? 'bg-blue-100' : ''}`}/>
+              {isConditions && <ConditionsAndModalities/>}
               <ButtonDivider onClick={toggleContract}
                             title="ContractResolutionNotice"
                             className={`my-3 hover:bg-gray-200 transition duration-300 ${isFormulaire ? 'bg-blue-100' : ''}`}
