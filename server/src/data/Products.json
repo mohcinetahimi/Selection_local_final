@@ -1,15 +1,15 @@
 {
-  "nextId": 2,
+  "nextId": 10,
   "products": [
     {
-      "name": "jasdf",
-      "nameEn": "asf",
-      "description": "asdf",
-      "format": "asdf",
-      "price": 23,
-      "category": "PORC",
+      "name": "SteakMinuteAA",
+      "nameEn": "SteakMinuteAA",
+      "description": "asdfsdfa",
+      "format": "5*4",
+      "price": 120,
+      "category": "BEEF",
       "quantities": [
-        2,
+        4,
         2,
         2,
         2
@@ -17,12 +17,58 @@
       "basicQuantities": [
         2,
         2,
-        22,
+        3,
+        1
+      ],
+      "imageSrc": "/images/product/7.jpeg",
+      "imageHoverSrc": "/images/product/h7.jpeg",
+      "id": 7
+    },
+    {
+      "name": "CoteDePorcManchon",
+      "nameEn": "CoteDePorcManchon",
+      "description": "asdffff",
+      "format": "8*7",
+      "price": 250,
+      "category": "PORK",
+      "quantities": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "basicQuantities": [
+        2,
+        1,
+        5,
+        5
+      ],
+      "imageSrc": "/images/product/8.png",
+      "imageHoverSrc": "/images/product/h8.png",
+      "id": 8
+    },
+    {
+      "name": "pilonPoulet",
+      "nameEn": "pilonPoulet",
+      "description": "sdfsdfsf",
+      "format": "8*8",
+      "price": 122,
+      "category": "CHICKEN",
+      "quantities": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "basicQuantities": [
+        1,
+        5,
+        2,
         2
       ],
-      "imageSrc": "/images/product/1.png",
-      "imageHoverSrc": "/images/product/h1.png",
-      "id": 1
+      "imageSrc": "/images/product/9.jpeg",
+      "imageHoverSrc": "/images/product/h9.jpeg",
+      "id": 9
     }
   ]
 }
