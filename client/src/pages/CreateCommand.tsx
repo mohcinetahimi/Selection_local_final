@@ -42,7 +42,7 @@ interface Title {
 const CreateCommande: React.FC = () => {
   const printRef = useRef<HTMLDivElement | null>(null);
   const { updateClient,client } = useProductContext();
-  const [selectedCategory, setSelectedCategory] = useState<string>('BOEUF');
+  const [selectedCategory, setSelectedCategory] = useState<string>('BEEF');
   const [isInfoVisible, setIsInfoVisible] = useState<boolean>(true);
   const [isFraisMentionVisible, setIsFraisMentionVisible] = useState<boolean>(true);
   const [isPaymentVisible, setIsPaymentVisible] = useState<boolean>(true);
@@ -152,7 +152,22 @@ const CreateCommande: React.FC = () => {
   
 
   const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
+    const translater = {
+      "BOEUF": "BEEF",
+      "POULET": "CHICKEN",
+      "PORC": "PORK",
+      "POISSON": "FISH",
+      "ÉPICERIE": "GROCERY",
+      "CONGÉLATEURS": "FREEZERS", 
+      "BEEF" : "BEEF" , 
+      "CHICKEN" : "CHICKEN" , 
+      "PORK" : "PORK" , 
+      "FISH" : "FISH",
+      "GROCERY": "GROCERY",
+      "FREEZERS": "FREEZERS", 
+      "FIN" : "FIN"
+  };
+    setSelectedCategory(translater[category]);
   };
   const toggleContract =  () => {
     setIscontract(prev => !prev);
@@ -185,7 +200,7 @@ const CreateCommande: React.FC = () => {
   };
 
   // Find the title object that matches the selected category
-  const selectedTitle = titles.find(title => title.category === selectedCategory);
+  const selectedTitle = titles.find(title => title.category === selectedCategory || title.categoryEn == selectedCategory);
 
 
   return (

@@ -22,6 +22,7 @@ const ResetButton: React.FC<ResetButtonProps> = ({ category }) => {
   const { language } = client;
 
   const handleReset = () => {
+    console.log("sdfldsjfljskdfljsfdjlsdfjlsfd" ,  category)
     resetQuantitiesByCategory(category);
   };
 

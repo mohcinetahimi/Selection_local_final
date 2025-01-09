@@ -1,74 +1,74 @@
 {
-  "nextId": 10,
+  "nextId": 24,
   "products": [
-    {
-      "name": "SteakMinuteAA",
-      "nameEn": "SteakMinuteAA",
-      "description": "asdfsdfa",
-      "format": "5*4",
-      "price": 120,
-      "category": "BEEF",
-      "quantities": [
-        4,
-        2,
-        2,
-        2
-      ],
-      "basicQuantities": [
-        2,
-        2,
-        3,
-        1
-      ],
-      "imageSrc": "/images/product/7.jpeg",
-      "imageHoverSrc": "/images/product/h7.jpeg",
-      "id": 7
-    },
     {
       "name": "CoteDePorcManchon",
       "nameEn": "CoteDePorcManchon",
-      "description": "asdffff",
-      "format": "8*7",
-      "price": 250,
+      "description": "\n25 à 30 minutes par demi livre sous l'eau froide (<21°C). Icône de four. 4 à 6 minutes de chaque côté dans la poêle à feu moyen-vif ou 2 minutes de chaque ",
+      "format": "12*2g",
+      "price": 12,
       "category": "PORK",
       "quantities": [
         1,
-        2,
+        1,
         1,
         1
       ],
       "basicQuantities": [
-        2,
         1,
-        5,
-        5
+        1,
+        1,
+        2
       ],
-      "imageSrc": "/images/product/8.png",
-      "imageHoverSrc": "/images/product/h8.png",
-      "id": 8
+      "imageSrc": "/images/product/21.png",
+      "imageHoverSrc": "/images/product/h21.png",
+      "id": 21
     },
     {
       "name": "pilonPoulet",
       "nameEn": "pilonPoulet",
-      "description": "sdfsdfsf",
-      "format": "8*8",
-      "price": 122,
+      "description": "  Des pilons de poulet au goût fumé etpilonPoulet  Des pilons de poulet au goût fumé et épicé, c’est tout ce qu’il y a de plus alléchant.",
+      "format": "1*2g",
+      "price": 55,
       "category": "CHICKEN",
       "quantities": [
-        1,
+        2,
         2,
         1,
+        2
+      ],
+      "basicQuantities": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "imageSrc": "/images/product/22.jpeg",
+      "imageHoverSrc": "/images/product/h22.jpeg",
+      "id": 22
+    },
+    {
+      "name": "SteakMinuteAAA  ",
+      "nameEn": "SteakMinuteAAA  ",
+      "description": "SteakMinuteAAA  Icône de la section BOEUF · Image de flocon. 10-15 minutes sous l'eau froide",
+      "format": "12*1g",
+      "price": 198,
+      "category": "BEEF",
+      "quantities": [
+        2,
+        2,
+        null,
         1
       ],
       "basicQuantities": [
         1,
-        5,
-        2,
-        2
+        4,
+        1,
+        1
       ],
-      "imageSrc": "/images/product/9.jpeg",
-      "imageHoverSrc": "/images/product/h9.jpeg",
-      "id": 9
+      "imageSrc": "/images/product/23.jpeg",
+      "imageHoverSrc": "/images/product/h23.jpeg",
+      "id": 23
     }
   ]
 }

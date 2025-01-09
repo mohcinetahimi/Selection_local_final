@@ -108,6 +108,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     
     const fetchProducts = async ()=>{
       try{
+        console.log("je veux hhh")
         const response = await axios.get("http://localhost:7070/api/consultant/products") ; 
         setProducts(response.data)
       }catch{
@@ -160,6 +161,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   };
 
   const resetQuantitiesByCategory = (category: string) => {
+    console.log('here')
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
         product.category === category

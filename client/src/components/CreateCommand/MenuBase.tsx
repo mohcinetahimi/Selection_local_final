@@ -9,11 +9,11 @@ interface Item {
 }
 
 const items: Item[] = [
-  { id: 1, category: 'BOEUF' },
-  { id: 2, category: 'POULET' },
-  { id: 3, category: 'PORC' },
-  { id: 4, category: 'POISSON' },
-  { id: 5, category: 'CONGÉLATEURS' },
+  { id: 1, category: 'BEEF' },
+  { id: 2, category: 'CHICKEN' },
+  { id: 3, category: 'PORK' },
+  { id: 4, category: 'FISH' },
+  { id: 5, category: 'FREEZERS' },
   // More items...
 ];
 
