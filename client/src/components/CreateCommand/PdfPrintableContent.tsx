@@ -29,7 +29,7 @@ const PdfPrintableContent: React.FC = () => {
       <ul>
         <li className={`overflow-hidden rounded-md bg-white shadow`}>
           {/* Passing the category to SummaryTable as selectedCategory */}
-          <SummaryTable selectedCategory={'BOEUF'} />
+          <SummaryTable selectedCategory={'BEEF'} />
           <br />
           <br />
           <br />
@@ -42,7 +42,7 @@ const PdfPrintableContent: React.FC = () => {
         </li>
         <li className={`overflow-hidden rounded-md bg-white shadow`}>
           {/* Passing the category to SummaryTable as selectedCategory */}
-          <SummaryTable selectedCategory={'POULET'} />
+          <SummaryTable selectedCategory={'CHICKEN'} />
           <br />
           <br />
           <br />
@@ -53,11 +53,11 @@ const PdfPrintableContent: React.FC = () => {
         </li>
         <li className={`overflow-hidden rounded-md bg-white shadow`}>
           {/* Passing the category to SummaryTable as selectedCategory */}
-          <SummaryTable selectedCategory={'PORC'} />
+          <SummaryTable selectedCategory={'PORK'} />
         </li>
         <li className={`overflow-hidden rounded-md bg-white shadow`}>
           {/* Passing the category to SummaryTable as selectedCategory */}
-          <SummaryTable selectedCategory={'POISSON'} />
+          <SummaryTable selectedCategory={'FISH'} />
           <br />
           <br />
           <br />
@@ -68,7 +68,7 @@ const PdfPrintableContent: React.FC = () => {
         </li>
         <li className={`overflow-hidden rounded-md bg-white shadow`}>
           {/* Passing the category to SummaryTable as selectedCategory */}
-          <SummaryTable selectedCategory={'CONGÉLATEURS'} />
+          <SummaryTable selectedCategory={'FREEZERS'} />
         </li>
 
       </ul>
